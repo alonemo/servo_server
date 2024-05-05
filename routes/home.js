@@ -51,19 +51,30 @@ const servos = [
   },
 ];
 
+
 router.get("/", async (req, res, next) => {
   return res.status(200).json({
-    title: "Express Testing",
-    message: "The app is working properly!",
+    message: "OK",
     servos: servos
   });
 });
 
 router.post("/moveServo", async (req,res) => {
   for(let i = 0; i < servos.length; i++){
-    servos[i].position += req.body.servos[i].position;
+    servos[i].position = req.body.servos[i].position;
   }
-  return res.status(200).json({servos: servos});
-})
+  return res.status(200).json({message: "OK", servos: servos});
+});
+
+router.post("/resetServos", async (req,res) => {
+  for(let i = 0; i < servos.length; i++){
+    servos[i].position = 0;
+  }
+  return res.status(200).json({message: "OK", servos: servos});
+});
+
+router.post("/stopScript", async(req,res) => {
+  return res.status(200).json({message: "STOPED!"});
+});
 
 module.exports = router;
