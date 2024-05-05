@@ -76,14 +76,15 @@ router.post("/moveServo", async (req,res) => {
     servos[i].position = req.body.servos[i].position;
     servos[i].speed = req.body.servos[i].speed;
   }
-  return res.status(200).json({message: "OK", servos: servos});
+  return res.status(200).json({message: "SUCCESS", servos: servos});
 });
 
 router.post("/resetServos", async (req,res) => {
   for(let i = 0; i < servos.length; i++){
     servos[i].position = 0;
+    servos[i].speed = 1;
   }
-  return res.status(200).json({message: "OK", servos: servos});
+  return res.status(200).json({message: "RESETED", servos: servos});
 });
 
 router.post("/stopScript", async(req,res) => {
