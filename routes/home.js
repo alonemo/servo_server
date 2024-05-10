@@ -88,7 +88,7 @@ router.post("/resetServos", async (req,res) => {
 });
 
 router.post("/stopScript", async(req,res) => {
-  return res.status(200).json({message: "STOPED!"});
+  return res.status(200).json({message: "STOPPED!"});
 });
 
 module.exports = router;
